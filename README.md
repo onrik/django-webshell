@@ -1,2 +1,2 @@
-django-webshell
+Django-webshell
 ===============
