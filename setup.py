@@ -10,6 +10,7 @@ setup(
     author='Andrey',
     author_email='and@rey.im',
     url='http://github.com/onrik/django-webshell',
+    download_url='http://github.com/onrik/django-webshell/tarball/master',
     license='MIT',
     classifiers=[
         'Development Status :: 4 - Beta',
