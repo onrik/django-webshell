@@ -5,8 +5,19 @@ Django application for running python code in your project's environment from dj
 Installation
 ------------
 
-INSTALLED_APPS = (
-    ...
-    'webshell',
-    ...
-)
+
+settings.py:
+
+    INSTALLED_APPS = (
+        ...
+        'webshell',
+        ...
+    )
+
+urls.py:
+
+    urlpatterns = patterns('',
+        ...
+        (r'^webshell/', include('webshell.urls')),
+        ...
+    )
