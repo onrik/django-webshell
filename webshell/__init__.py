@@ -1,4 +1,4 @@
-VERSION = (0, 0, '1b')
+VERSION = (0, 0, '2b')
 
 def get_version():
     return '.'.join([str(v) for v in VERSION])
