@@ -12,6 +12,7 @@ setup(
     url='http://github.com/onrik/django-webshell',
     download_url='http://github.com/onrik/django-webshell/tarball/master',
     license='MIT',
+    packages=['webshell']
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
