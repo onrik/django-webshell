@@ -19,6 +19,8 @@ urls.py:
 
     urlpatterns = patterns('',
         ...
-        (r'^webshell/', include('webshell.urls')),
+        (r'^admin/webshell/', include('webshell.urls')),
         ...
     )
+    
+![django-webshell](example.png)
