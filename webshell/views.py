@@ -1,4 +1,4 @@
-from subprocess import Popen, PIPE
+import commands
 
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -11,7 +11,6 @@ from django.contrib.auth.decorators import permission_required
 @permission_required('is_superuser')
 def execute_script_view(request):
     source = request.POST.get('source', '').replace('"', r'\"')
-    proc = Popen('python -c "%s"' % source, shell=True, stdout=PIPE, stderr=PIPE)
-    out, err = proc.communicate()
+    result = commands.getoutput('python -c "%s"' % source)
 
-    return HttpResponse(out or err)
+    return HttpResponse(result)

@@ -101,12 +101,16 @@
         }
     });
 
+    if (navigator.platform.search('MacIntel') >=0) {
+        django.jQuery('#id_execute').text('{% trans "Execute" %} (Cmd+Enter)');
+    }
+
     var webshellEditor = django.jQuery('#id_output');
 
     function executeSource(){
-       webshellEditor.html('Executing...');
+       webshellEditor.text('Executing...');
         django.jQuery.post('{% url "execute-script" %}', {'source': editor.getValue()}, function(response){
-            webshellEditor.html(response);
+            webshellEditor.text(response);
             hljs.highlightBlock(webshellEditor.get(0));
         });
     }
