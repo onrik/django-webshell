@@ -72,7 +72,8 @@
             {% endif %}
             {# JavaScript for prepopulated fields #}
             {% prepopulated_fields_js %}
-            <button id="id_execute" type="button" onclick="executeSource();" style="font-size: 14px; padding: 10px 20px;">{% trans "Execute" %} (Ctrl+S)</button>
+            <button id="id_execute" type="button" onclick="executeSource();" style="font-size: 14px; padding: 10px 20px;">{% trans "Execute" %} (Ctrl+Enter)</button>
+            <hr><br>
             <div id="id_output" class="syntax"></div>
         </div>
     </form>
@@ -100,10 +101,13 @@
         }
     });
 
+    var webshellEditor = django.jQuery('#id_output');
+
     function executeSource(){
-        django.jQuery('#id_output').html('Executing...');
+       webshellEditor.html('Executing...');
         django.jQuery.post('{% url "execute-script" %}', {'source': editor.getValue()}, function(response){
-            django.jQuery('#id_output').html(response);
+            webshellEditor.html(response);
+            hljs.highlightBlock(webshellEditor.get(0));
         });
     }
 </script>

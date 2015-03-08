@@ -8,6 +8,13 @@ class ScriptForm(forms.ModelForm):
 
     class Media:
         css = {
-            'all': ('css/codemirror.css', 'css/pygments_style.css')
+            'all': (
+                'css/codemirror.css',
+                'css/highlight.min.css'
+            )
         }
-        js = ('js/codemirror.js', 'js/python.js')
+        js = (
+            'js/codemirror.js',
+            'js/python.js',
+            'js/highlight.min.js',
+        )

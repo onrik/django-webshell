@@ -5,10 +5,6 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import permission_required
 
-from pygments import highlight
-from pygments.lexers import get_lexer_by_name
-from pygments.formatters import HtmlFormatter
-
 
 @csrf_exempt
 @require_POST
@@ -18,8 +14,4 @@ def execute_script_view(request):
     proc = Popen('python -c "%s"' % source, shell=True, stdout=PIPE, stderr=PIPE)
     out, err = proc.communicate()
 
-    lexer = get_lexer_by_name('pytb', stripall=True)
-    formatter = HtmlFormatter(linenos=True, cssclass='source')
-    result = highlight(out or err, lexer, formatter)
-
-    return HttpResponse(result)
+    return HttpResponse(out or err)
