@@ -5,7 +5,7 @@ Django application for running python code in your project's environment from dj
 Installation
 ------------
 
-    pip install git+https://github.com/onrik/django-webshell.git#egg=webshell
+    pip install webshell
 
 settings.py:
 
