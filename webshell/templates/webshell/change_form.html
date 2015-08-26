@@ -105,14 +105,18 @@
         django.jQuery('#id_execute').text('{% trans "Execute" %} (Cmd+Enter)');
     }
 
-    var webshellEditor = django.jQuery('#id_output');
+    var webshellEditor = django.jQuery('#id_output'),
+        csrf_token = django.jQuery('input[name="csrfmiddlewaretoken"]').val();
 
     function executeSource(){
        webshellEditor.text('Executing...');
-        django.jQuery.post('{% url "execute-script" %}', {'source': editor.getValue()}, function(response){
-            webshellEditor.text(response);
-            hljs.highlightBlock(webshellEditor.get(0));
-        });
+        django.jQuery.post('{% url "execute-script" %}',
+            {'source': editor.getValue(), 'csrfmiddlewaretoken': csrf_token},
+            function(response){
+                webshellEditor.text(response);
+                hljs.highlightBlock(webshellEditor.get(0));
+            }
+        );
     }
 </script>
 {% endblock %}

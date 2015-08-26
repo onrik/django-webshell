@@ -5,6 +5,7 @@ from .models import Script
 class ScriptForm(forms.ModelForm):
     class Meta:
         model = Script
+        fields = ['name', 'source']
 
     class Media:
         css = {
