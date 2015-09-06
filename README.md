@@ -8,19 +8,20 @@ Installation
     pip install webshell
 
 settings.py:
-
-    INSTALLED_APPS = (
-        ...
-        'webshell',
-        ...
-    )
+```python
+INSTALLED_APPS = (
+    ...
+    'webshell',
+    ...
+)
+```
 
 urls.py:
-
-    urlpatterns = patterns('',
-        ...
-        (r'^admin/webshell/', include('webshell.urls')),
-        ...
-    )
-    
+```python
+urlpatterns = patterns('',
+    ...
+    (r'^admin/webshell/', include('webshell.urls')),
+    ...
+)
+```
 ![django-webshell](example.png)
