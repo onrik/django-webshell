@@ -11,6 +11,7 @@ class WebshellTestCase(TestCase):
     def setUp(self):
         self.user = User.objects.create(username='user')
         self.user.set_password('123456')
+        self.user.save()
         self.login_url = '%s?next=%s' % (settings.LOGIN_URL, self.url)
 
     def test_wrong_method(self):
@@ -33,5 +34,5 @@ class WebshellTestCase(TestCase):
 
         self.assertTrue(
             self.client.login(username=self.user.username, password='123456'))
-        response = self.client.post(self.url, data={'source': 'print 1'})
-        self.assertEqual(response.content.strip(), '1')
+        response = self.client.post(self.url, data={'source': 'print(1)'})
+        self.assertEqual(response.content, b'1\n')
