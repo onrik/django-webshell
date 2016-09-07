@@ -12,6 +12,11 @@ env:
 
 install:
   - pip install Django==$DJANGO
+  - pip install coveralls
   - pip install -e .
 
-script: python setup.py test
+script:
+  - python setup.py test
+
+after_success:
+  - coveralls
