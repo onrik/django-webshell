@@ -1,4 +1,6 @@
-from distutils.core import setup
+#!/usr/bin/env python
+
+from setuptools import setup, find_packages
 from webshell import __version__
 
 DESCRIPTION = "Django application for running python code in your project's environment from django admin."
@@ -12,13 +14,8 @@ setup(
     url='http://github.com/onrik/django-webshell',
     download_url='http://github.com/onrik/django-webshell/tarball/master',
     license='MIT',
-    packages=['webshell'],
-    package_data={'webshell': [
-        'templates/webshell/*.html',
-        'migrations/*.py',
-        'static/css/*.css',
-        'static/js/*.js'
-    ]},
+    packages=find_packages(),
+    test_suite='runtests.runtests',
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
