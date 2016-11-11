@@ -15,6 +15,11 @@ setup(
     download_url='http://github.com/onrik/django-webshell/tarball/master',
     license='MIT',
     packages=find_packages(),
+    package_data={'webshell': [
+        'templates/webshell/*',
+        'static/css/*',
+        'static/js/*',
+    ]},
     test_suite='runtests.runtests',
     classifiers=[
         'Development Status :: 5 - Production/Stable',
