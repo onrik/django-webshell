@@ -25,7 +25,6 @@ if not settings.configured:
             'django.contrib.contenttypes',
             'django.contrib.sessions',
             'django.contrib.messages',
-            'django.contrib.staticfiles',
 
             'webshell',
         ],
@@ -40,7 +39,7 @@ if not settings.configured:
             'django.middleware.clickjacking.XFrameOptionsMiddleware',
         ],
 
-        ROOT_URLCONF='webshell.urls',
+        ROOT_URLCONF='testurls',
         DEBUG=False,
     )
 
