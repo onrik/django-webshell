@@ -44,6 +44,13 @@ class WebshellTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.content, b'1\n')
 
+    def test_success_exception(self):
+        self.login()
+
+        response = self.client.post(self.url, data={'source': '[1][1]'})
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'IndexError: list index out of range', response.content)
+
     def test_admin(self):
         self.login()
 
