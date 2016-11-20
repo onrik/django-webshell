@@ -14,11 +14,12 @@ class Migration(migrations.Migration):
             name='Script',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('name', models.CharField(max_length=100)),
-                ('source', models.TextField()),
+                ('name', models.CharField(max_length=100, verbose_name='Name')),
+                ('source', models.TextField(verbose_name='Source')),
             ],
             options={
+                'verbose_name': 'Script',
+                'verbose_name_plural': 'Scripts',
             },
-            bases=(models.Model,),
         ),
     ]
