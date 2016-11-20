@@ -28,6 +28,14 @@ if not settings.configured:
 
             'webshell',
         ],
+
+        TEMPLATES = [
+            {
+                'BACKEND': 'django.template.backends.django.DjangoTemplates',
+                'APP_DIRS': True,
+            },
+        ],
+
         MIDDLEWARE_CLASSES = [
             'django.middleware.security.SecurityMiddleware',
             'django.contrib.sessions.middleware.SessionMiddleware',
