@@ -8,7 +8,7 @@ Django application for running python code in your project's environment from dj
 Installation
 ------------
 
-    pip install webshell
+    pip install django_webshell
 
 settings.py:
 ```python
