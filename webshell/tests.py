@@ -1,8 +1,11 @@
 # coding: utf-8
 from django.test import TestCase
 from django.conf import settings
-from django.core.urlresolvers import reverse
 from django.contrib.auth import get_user_model
+try:
+    from django.core.urlresolvers import reverse
+except ImportError:
+    from django.urls import reverse
 
 from webshell.models import Script
 
