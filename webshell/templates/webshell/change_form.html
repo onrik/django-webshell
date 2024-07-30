@@ -79,37 +79,40 @@
     </form>
 </div>
 <script>
-    var editor = CodeMirror.fromTextArea(document.getElementById('id_source'), {
-        mode: {
-            name: "python",
-            version: 2,
-            singleLineStringErrors: false
-        },
-        lineNumbers: true,
-        indentUnit: 4,
-        tabMode: "shift",
-        matchBrackets: true,
-        extraKeys: {
-            "Cmd-Enter": function(instance) {
-                executeSource();
-                return false;
+   django.jQuery(document).ready(function(){
+        var editor = CodeMirror.fromTextArea(document.getElementById('id_source'), {
+            mode: {
+                name: "python",
+                version: 2,
+                singleLineStringErrors: false
             },
-            "Ctrl-Enter": function(instance) {
-                executeSource();
-                return false;
+            theme: "darcula",
+            lineNumbers: true,
+            indentUnit: 4,
+            tabMode: "shift",
+            matchBrackets: true,
+            extraKeys: {
+                "Cmd-Enter": function(instance) {
+                    executeSource();
+                    return false;
+                },
+                "Ctrl-Enter": function(instance) {
+                    executeSource();
+                    return false;
+                }
             }
+        });
+    
+        if (navigator.platform.search('MacIntel') >=0) {
+            django.jQuery('#id_execute').text('{% trans "Execute" %} (Cmd+Enter)');
         }
-    });
-
-    if (navigator.platform.search('MacIntel') >=0) {
-        django.jQuery('#id_execute').text('{% trans "Execute" %} (Cmd+Enter)');
-    }
-
-    var webshellEditor = django.jQuery('#id_output'),
-        csrf_token = django.jQuery('input[name="csrfmiddlewaretoken"]').val();
+    
+        var webshellEditor = django.jQuery('#id_output'),
+            csrf_token = django.jQuery('input[name="csrfmiddlewaretoken"]').val();
+    })
 
     function executeSource(){
-       webshellEditor.text('Executing...');
+       webshellEditor.text('{% trans "Executing..." %}');
         django.jQuery.post('{% url "execute-script" %}',
             {'source': editor.getValue(), 'csrfmiddlewaretoken': csrf_token},
             function(response){
